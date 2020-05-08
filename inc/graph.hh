@@ -6,7 +6,11 @@
 class Edge;
 class Graph;
 
+class BellmanfordTestResults
+{
+    public:
 
+};
 
 class Edge
 {
