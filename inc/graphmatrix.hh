@@ -15,7 +15,7 @@ class GraphMatrix: private Graph
         void insertEdge(int sourceVertex, int destinationVertex, int weight);
 
         int vertices();
-        LinkedList<Edge*> edges() {};
+        LinkedList<Edge*> edges();
 
         void fillRandom(int vertexNumber, float density);
 
@@ -23,6 +23,7 @@ class GraphMatrix: private Graph
         void bellmanford();
         void print();
         void fillFromFile(char* filename);
+        void setStartingVertexForBellmanford(int startingVertex);
 
 };
 

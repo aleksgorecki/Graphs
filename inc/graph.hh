@@ -43,6 +43,7 @@ class Graph
         virtual void print() = 0;
         virtual void fillRandom(int vertexNumber, float density) = 0;
         virtual void fillFromFile(char* filename) = 0;
+        virtual void setStartingVertexForBellmanford(int startingVertex) = 0;
 };
 
 

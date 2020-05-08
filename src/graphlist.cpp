@@ -4,10 +4,19 @@
 #include <ios>
 #include <fstream>
 
+void GraphList::setStartingVertexForBellmanford(int startingVertex)
+{
+    this->startingVertexForBellmanford = startingVertex;
+}
 
 int GraphList::vertices()
 {
     return this->nVertices;
+}
+
+LinkedList<Edge*> GraphList::edges()
+{  
+    return edgeList;
 }
 
 void GraphList::allocateMemoryForDataStructure()
@@ -72,19 +81,6 @@ void GraphList::fillRandom(int vertexNumber, float density)
         insertEdge(sV, dV, weight);
         insertEdge(dV, sV, weight);
     }
-
-
-    for (int i = 0; i < vertices(); i++)
-    {
-        std::cout << i << " - ";
-        for (LinkedList<Edge*>::Iterator iter = adjacencyList[i].begin(); iter != adjacencyList[i].end(); ++iter)
-        {
-            std::cout << iter.getData()->destinationVertex << "->";
-        }
-        std::cout << std::endl;
-    }
-    
-
 }
 
 void GraphList::bellmanford()
@@ -152,10 +148,14 @@ void GraphList::fillFromFile(char* filename)
     int sV;
     int dV;
     int w;
-    while (!inputFile.eof())
+    while (true)
     {
-        inputFile >> sV >> dV >> w;
+        inputFile >> sV >> dV>> w;
         insertEdge(sV, dV, w);
+        if(inputFile.eof())
+        {
+            break;
+        }
     }
 
 }

@@ -18,7 +18,7 @@ class GraphList: private Graph
         void insertEdge(int sourceVertex, int destinationVertex, int weight);
 
         int vertices();
-        LinkedList<Edge*> edges() {};
+        LinkedList<Edge*> edges();
 
         void fillRandom(int vertexNumber, float density);
 
@@ -26,6 +26,7 @@ class GraphList: private Graph
         void bellmanford();
         void fillFromFile(char* filename);
         void allocateMemoryForDataStructure();
+        void setStartingVertexForBellmanford(int startingVertex);
 };
 
 

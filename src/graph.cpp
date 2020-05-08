@@ -2,6 +2,8 @@
 
 
 
+
+
 bool Edge::operator !=(Edge e)
 {
     if (this->sourceVertex == e.sourceVertex && this->destinationVertex == e.destinationVertex && this->weight == e.weight)

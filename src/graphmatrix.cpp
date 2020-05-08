@@ -4,11 +4,20 @@
 #include <ios>
 #include <fstream>
 
+void GraphMatrix::setStartingVertexForBellmanford(int startingVertex)
+{
+    this->startingVertexForBellmanford = startingVertex;
+}
 
 
 int GraphMatrix::vertices()
 {
     return nVertices;
+}
+
+LinkedList<Edge*> GraphMatrix::edges()
+{  
+    return edgeList;
 }
 
 void GraphMatrix::allocateMemoryForDataStructure()
@@ -88,6 +97,7 @@ void GraphMatrix::bellmanford()
     int infinity = 1000000;
     int* distance = new int[vertices()];
     int* predecessor = new int[vertices()];
+    LinkedList<int>* predecessors = new LinkedList<int>[vertices()];
     for (int i = 0; i < vertices(); i++)
     {
         distance[i] = infinity;
@@ -109,6 +119,7 @@ void GraphMatrix::bellmanford()
                     {
                         distance[k] = distance[j] + adjacencyMatrix[j][k]->weight;
                         predecessor[k] = j;
+                        predecessors[k].insertBack(j);
                     }
                 }
 
@@ -118,9 +129,20 @@ void GraphMatrix::bellmanford()
 
     }
 
+    /*
     for (int i = 0; i < vertices(); i++)
     {
         std::cout << i << "  --  " << predecessor[i] << "  --  " << distance[i] << std::endl;
+    }
+    */
+    for (int i = 0; i < vertices(); i++)
+    {
+        std::cout << i << ": dystans = " << distance[i] << " poprzednicy: ";
+        for (LinkedList<int>::Iterator iter = predecessors[i].begin(); iter != predecessors[i].end(); ++iter)
+        {
+          std::cout << iter.getData();   
+        }
+        std::cout << std::endl;
     }
     delete[] distance;
     delete[] predecessor;
@@ -160,10 +182,14 @@ void GraphMatrix::fillFromFile(char* filename)
     int sV;
     int dV;
     int w;
-    while (!inputFile.eof())
+    while (true)
     {
         inputFile >> sV >> dV>> w;
         insertEdge(sV, dV, w);
+        if(inputFile.eof())
+        {
+            break;
+        }
     }
 
 }
