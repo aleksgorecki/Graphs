@@ -1,17 +1,6 @@
 #include "../inc/graphlist.hh"
 
 
-bool Vertex::operator !=(Vertex v)
-{
-    if (this->vertexListPosition == v.vertexListPosition)
-    {
-        return false;
-    }
-    else
-    {
-        return true;
-    } 
-}
 
 bool Edge::operator !=(Edge e)
 {
@@ -26,17 +15,6 @@ bool Edge::operator !=(Edge e)
 }
 
 
-bool Vertex::operator ==(Vertex v)
-{
-    if (this->label == v.label)
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    } 
-}
 
 bool Edge::operator ==(Edge e)
 {

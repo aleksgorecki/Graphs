@@ -19,23 +19,15 @@ void Log(T data)
 }
 
 
-std::ostream& operator << (std::ostream& out, Vertex v)
-{
 
-    out << v.label;
-    return out;
-}
 
 int main()
 {
 
 	srand(time(0));	
-
-	Vertex v;
-	GraphList graf;
-
-	int vertexNumber = 5;
 	float density = 0.5;
+	int vertexNumber;
+	GraphList graf;
 
 	graf.fillRandom(vertexNumber, density);
 	graf.bellmanford();
