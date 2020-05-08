@@ -22,8 +22,12 @@ class GraphMatrix: private Graph
 
         void fillRandom(int vertexNumber, float density);
 
+        void allocateMemoryForDataStructure();
         GraphMatrix() {nVertices = 0;};
         void bellmanford();
+        void print();
+        void fillFromFile(char* filename);
+
 };
 
 

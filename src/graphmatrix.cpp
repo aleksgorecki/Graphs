@@ -1,11 +1,19 @@
 #include "../inc/graphmatrix.hh"
 #include "../inc/graphmatrix.hh"
 
+#include <ios>
+#include <fstream>
+
 
 
 int GraphMatrix::vertices()
 {
     return nVertices;
+}
+
+void GraphMatrix::allocateMemoryForDataStructure()
+{
+    
 }
 
 bool GraphMatrix::areAdjacent(int v1, int v2)
@@ -110,8 +118,63 @@ void GraphMatrix::bellmanford()
 
     for (int i = 0; i < vertices(); i++)
     {
-        std::cout << predecessor[i] << "  --  " << distance[i] << std::endl;
+        std::cout << i << "  --  " << predecessor[i] << "  --  " << distance[i] << std::endl;
     }
     delete[] distance;
     delete[] predecessor;
+}
+
+void GraphMatrix::print()
+{
+    for (int i = 0; i < vertices(); i++)
+    {
+        for (int j = 0; j < vertices(); j++)
+        {
+            if (adjacencyMatrix[i][j] != NULL)
+            {
+                std::cout << 1;
+            }
+            else
+            {
+                std::cout << 0;
+            }
+        }
+        std::cout << std::endl;
+    }
+}
+
+void GraphMatrix::fillFromFile(char* filename)
+{
+    std::ifstream inputFile;
+    inputFile.open(filename);
+    int vertexNumber;
+    int edgeNumber;
+    int startingVertex;
+    int destinationVertex;
+    int weight;
+    inputFile >> edgeNumber >> vertexNumber >> startingVertex;
+    this->nVertices = vertexNumber;
+    this->startingVertexForBellmanford = startingVertex;
+    this->adjacencyMatrix = new Edge**[vertices()];
+    for (int i = 0; i < vertices(); i++)
+    {
+        this->adjacencyMatrix[i] = new Edge*[vertices()];
+    }
+    for (int i = 0; i < vertices(); i++)
+    {
+        for (int j = 0; j < vertices(); j++)
+        {
+            adjacencyMatrix[i][j] = NULL;
+        }
+    }
+
+    int sV;
+    int dV;
+    int w;
+    while (!inputFile.eof())
+    {
+        inputFile >> sV >> dV>> w;
+        insertEdge(sV, dV, w);
+    }
+
 }

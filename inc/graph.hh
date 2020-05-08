@@ -28,6 +28,7 @@ class Graph
 {
     protected:
         int nVertices;
+        int startingVertexForBellmanford;
         LinkedList<Edge*> edgeList;
 
     public:
@@ -42,7 +43,10 @@ class Graph
         virtual int vertices() = 0;
         virtual LinkedList<Edge*> edges() = 0;
 
+        virtual void allocateMemoryForDataStructure() = 0;
+        virtual void print() = 0;
         virtual void fillRandom(int vertexNumber, float density) = 0;
+        virtual void fillFromFile(char* filename) = 0;
 };
 
 

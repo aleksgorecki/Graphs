@@ -117,3 +117,11 @@ void GraphList::bellmanford()
     delete[] distance;
     delete[] predecessor;
 }
+
+void GraphList::print()
+{
+    for(int i = 0; i < vertices(); i++)
+    {
+        std::cout << "[" << i << "]-" << adjacencyList[i] << std::endl;
+    }
+}

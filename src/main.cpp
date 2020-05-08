@@ -31,8 +31,10 @@ int main()
 	//GraphList graf;
 	GraphMatrix graf;
 
-	graf.fillRandom(vertexNumber, density);
-	graf.bellmanford();
+	//graf.fillRandom(vertexNumber, density);
+	//graf.bellmanford();
+	graf.fillFromFile("test.txt");
+	graf.print();
 
 
 	return 0;

@@ -26,8 +26,10 @@ class GraphList: private Graph
 
         void fillRandom(int vertexNumber, float density);
 
+        void print();
         GraphList() {nVertices = 0; edgeList; adjacencyList;};
         void bellmanford();
+        void fillFromFile(char* filename) {};
 };
 
 
