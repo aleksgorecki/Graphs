@@ -15,18 +15,18 @@ class GraphList: private Graph
     public:
         int endVertices(Edge e) {};
         int opposite(int v, Edge* e) {};
-        bool areAdjacent(int firstVertex, int secondVertex) {};
+        bool areAdjacent(int firstVertex, int secondVertex);
 
         void insertVertex(int label) {};
-        void insertEdge(int sourceVertex, int destinationVertex, int weight) {};
+        void insertEdge(int sourceVertex, int destinationVertex, int weight);
 
         LinkedList<Edge*> incidentEdges(int v) {};
-        int* vertices() {};
+        int vertices();
         LinkedList<Edge*> edges() {};
 
-        void fillRandom(int vertexNumber, float density) {};
+        void fillRandom(int vertexNumber, float density);
 
-
+        GraphList() {nVertices = 0; edgeList; adjacencyList;};
         void bellmanford();
 };
 

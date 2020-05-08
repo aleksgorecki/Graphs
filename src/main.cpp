@@ -25,8 +25,8 @@ int main()
 {
 
 	srand(time(0));	
-	float density = 0.5;
-	int vertexNumber;
+	float density = 0.25;
+	int vertexNumber = 5;
 	GraphList graf;
 
 	graf.fillRandom(vertexNumber, density);

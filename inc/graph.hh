@@ -18,6 +18,8 @@ class Edge
         LinkedList<Edge*>::Iterator edgeListPosition;
         bool operator ==(Edge e);
         bool operator !=(Edge e);
+        Edge(int sV, int dV, int w) {sourceVertex = sV; destinationVertex = dV; weight = w;};
+        Edge() {};
     friend class Graph;
 };
 
@@ -25,6 +27,7 @@ class Edge
 class Graph
 {
     protected:
+        int nVertices;
         LinkedList<Edge*> edgeList;
 
     public:
@@ -36,7 +39,7 @@ class Graph
         virtual void insertEdge(int sourceVertex, int destinationVertex, int weight) = 0;
 
         virtual LinkedList<Edge*> incidentEdges(int v) = 0;
-        virtual int* vertices() = 0;
+        virtual int vertices() = 0;
         virtual LinkedList<Edge*> edges() = 0;
 
         virtual void fillRandom(int vertexNumber, float density) = 0;

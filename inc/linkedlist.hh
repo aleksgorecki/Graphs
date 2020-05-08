@@ -49,6 +49,7 @@ class LinkedList
         void removeFront();
         void removeBack();
         void removeAtPosition(const Iterator& position);
+        bool contains(const T& dataToCheck);
 };
 
 //Iterator
@@ -190,6 +191,19 @@ template <typename T>
 void LinkedList<T>::removeBack()
 {
     removeAtPosition(--end());
+}
+
+template <typename T>
+bool LinkedList<T>::contains(const T& dataToCheck)
+{
+    for (Iterator iter(begin()); iter != end(); ++iter)
+    {
+        if (iter.getData() == dataToCheck)
+        {
+            return true;
+        }
+    }
+    return false;
 }
 
 template <typename T>
