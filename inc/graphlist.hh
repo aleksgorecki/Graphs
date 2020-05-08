@@ -13,23 +13,19 @@ class GraphList: private Graph
     private:
         LinkedList<Edge*>* adjacencyList;
     public:
-        int endVertices(Edge e) {};
-        int opposite(int v, Edge* e) {};
         bool areAdjacent(int firstVertex, int secondVertex);
 
-        void insertVertex(int label) {};
         void insertEdge(int sourceVertex, int destinationVertex, int weight);
 
-        LinkedList<Edge*> incidentEdges(int v) {};
         int vertices();
         LinkedList<Edge*> edges() {};
 
         void fillRandom(int vertexNumber, float density);
 
         void print();
-        GraphList() {nVertices = 0; edgeList; adjacencyList;};
         void bellmanford();
-        void fillFromFile(char* filename) {};
+        void fillFromFile(char* filename);
+        void allocateMemoryForDataStructure();
 };
 
 

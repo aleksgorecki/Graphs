@@ -32,14 +32,10 @@ class Graph
         LinkedList<Edge*> edgeList;
 
     public:
-        virtual int endVertices(Edge e) = 0;
-        virtual int opposite(int v, Edge* e) = 0;
         virtual bool areAdjacent(int firstVertex, int secondVertex) = 0;
 
-        virtual void insertVertex(int label) = 0;
         virtual void insertEdge(int sourceVertex, int destinationVertex, int weight) = 0;
 
-        virtual LinkedList<Edge*> incidentEdges(int v) = 0;
         virtual int vertices() = 0;
         virtual LinkedList<Edge*> edges() = 0;
 

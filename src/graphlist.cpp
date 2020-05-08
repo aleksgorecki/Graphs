@@ -1,12 +1,18 @@
 #include "../inc/graphlist.hh"
 
 #include <random>
-
+#include <ios>
+#include <fstream>
 
 
 int GraphList::vertices()
 {
     return this->nVertices;
+}
+
+void GraphList::allocateMemoryForDataStructure()
+{
+    this->adjacencyList = new LinkedList<Edge*>[vertices()];
 }
 
 bool GraphList::areAdjacent(int v1, int v2)
@@ -36,7 +42,7 @@ void GraphList::fillRandom(int vertexNumber, float density)
 {
     int maxWeight = 100;
     this->nVertices = vertexNumber;
-    this->adjacencyList = new LinkedList<Edge*>[vertices()];
+    allocateMemoryForDataStructure();
     int edgesToCreate = (density * vertexNumber * (vertexNumber - 1))/2;
     LinkedList<int> alreadyConnectedVertices;
     int sV = 0;
@@ -83,7 +89,7 @@ void GraphList::fillRandom(int vertexNumber, float density)
 
 void GraphList::bellmanford()
 {
-    int startingVertex = 4;
+    int startingVertex = startingVertexForBellmanford;
 
     int infinity = 1000000;
     int* distance = new int[vertices()];
@@ -112,7 +118,7 @@ void GraphList::bellmanford()
 
     for (int i = 0; i < vertices(); i++)
     {
-        std::cout << predecessor[i] << "  --  " << distance[i] << std::endl;
+        std::cout << i << "  --  " << distance[i] << std::endl;
     }
     delete[] distance;
     delete[] predecessor;
@@ -122,6 +128,34 @@ void GraphList::print()
 {
     for(int i = 0; i < vertices(); i++)
     {
-        std::cout << "[" << i << "]-" << adjacencyList[i] << std::endl;
+        std::cout << i;
+        for (LinkedList<Edge*>::Iterator iter = adjacencyList[i].begin(); iter != adjacencyList[i].end(); ++iter)
+        {
+            std::cout << "<-->" << iter.getData()->destinationVertex;
+        } 
+        std::cout << std::endl;
     }
+}
+
+void GraphList::fillFromFile(char* filename)
+{
+    std::ifstream inputFile;
+    inputFile.open(filename);
+    int vertexNumber;
+    int edgeNumber;
+    int startingVertex;
+    inputFile >> edgeNumber >> vertexNumber >> startingVertex;
+    this->nVertices = vertexNumber;
+    this->startingVertexForBellmanford = startingVertex;
+    allocateMemoryForDataStructure();
+
+    int sV;
+    int dV;
+    int w;
+    while (!inputFile.eof())
+    {
+        inputFile >> sV >> dV >> w;
+        insertEdge(sV, dV, w);
+    }
+
 }

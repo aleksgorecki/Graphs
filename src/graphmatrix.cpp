@@ -13,7 +13,18 @@ int GraphMatrix::vertices()
 
 void GraphMatrix::allocateMemoryForDataStructure()
 {
-    
+    this->adjacencyMatrix = new Edge**[vertices()];
+    for (int i = 0; i < vertices(); i++)
+    {
+        this->adjacencyMatrix[i] = new Edge*[vertices()];
+    }
+    for (int i = 0; i < vertices(); i++)
+    {
+        for (int j = 0; j < vertices(); j++)
+        {
+            adjacencyMatrix[i][j] = NULL;
+        }
+    }
 }
 
 bool GraphMatrix::areAdjacent(int v1, int v2)
@@ -23,6 +34,7 @@ bool GraphMatrix::areAdjacent(int v1, int v2)
         return true;
     }
     return false;
+    
 }
 
 void GraphMatrix::insertEdge(int sV, int dV, int w)
@@ -36,23 +48,13 @@ void GraphMatrix::fillRandom(int vertexNumber, float density)
 {
     int maxWeight = 100;
     this->nVertices = vertexNumber;
-    this->adjacencyMatrix = new Edge**[vertices()];
-    for (int i = 0; i < vertices(); i++)
-    {
-        this->adjacencyMatrix[i] = new Edge*[vertices()];
-    }
+    allocateMemoryForDataStructure();
     int edgesToCreate = (density * vertexNumber * (vertexNumber - 1))/2;
     LinkedList<int> alreadyConnectedVertices;
     int sV = 0;
     int dV;
     int weight;
-    for (int i = 0; i < vertices(); i++)
-    {
-        for (int j = 0; j < vertices(); j++)
-        {
-            adjacencyMatrix[i][j] = NULL;
-        }
-    }
+
     for (int i = 1; i < vertices(); i++)
     {
         alreadyConnectedVertices.insertFront(sV);
@@ -81,7 +83,7 @@ void GraphMatrix::fillRandom(int vertexNumber, float density)
 
 void GraphMatrix::bellmanford()
 {
-    int startingVertex = 2;
+    int startingVertex = startingVertexForBellmanford;
 
     int infinity = 1000000;
     int* distance = new int[vertices()];
@@ -150,23 +152,10 @@ void GraphMatrix::fillFromFile(char* filename)
     int vertexNumber;
     int edgeNumber;
     int startingVertex;
-    int destinationVertex;
-    int weight;
     inputFile >> edgeNumber >> vertexNumber >> startingVertex;
     this->nVertices = vertexNumber;
     this->startingVertexForBellmanford = startingVertex;
-    this->adjacencyMatrix = new Edge**[vertices()];
-    for (int i = 0; i < vertices(); i++)
-    {
-        this->adjacencyMatrix[i] = new Edge*[vertices()];
-    }
-    for (int i = 0; i < vertices(); i++)
-    {
-        for (int j = 0; j < vertices(); j++)
-        {
-            adjacencyMatrix[i][j] = NULL;
-        }
-    }
+    allocateMemoryForDataStructure();
 
     int sV;
     int dV;
