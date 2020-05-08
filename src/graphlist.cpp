@@ -95,16 +95,16 @@ void GraphList::bellmanford()
     }
     distance[startingVertex] = 0;
 
-    for (int j = 0; j < vertices()-1; j++)
+    for (int i = 0; i < vertices(); i++)
     {
-        for(int i = 0; i < vertices(); i++)
+        for(int j = 0; j < vertices(); j++)
         {
-            for (LinkedList<Edge*>::Iterator iter = adjacencyList[i].begin(); iter != adjacencyList[i].end(); ++iter)
+            for (LinkedList<Edge*>::Iterator iter = adjacencyList[j].begin(); iter != adjacencyList[j].end(); ++iter)
             {
-                if (distance[i] + iter.getData()->weight < distance[iter.getData()->destinationVertex])
+                if (distance[j] + iter.getData()->weight < distance[iter.getData()->destinationVertex])
                 {
-                    distance[iter.getData()->destinationVertex] = distance[i] + iter.getData()->weight;
-                    predecessor[iter.getData()->destinationVertex] = i;
+                    distance[iter.getData()->destinationVertex] = distance[j] + iter.getData()->weight;
+                    predecessor[iter.getData()->destinationVertex] = j;
                 }
             }
         }

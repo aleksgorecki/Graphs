@@ -10,7 +10,7 @@ int GraphMatrix::vertices()
 
 bool GraphMatrix::areAdjacent(int v1, int v2)
 {
-    if ((adjacencyMatrix[v1][v2] != NULL) && (adjacencyMatrix[v2][v1] != NULL))
+    if ((adjacencyMatrix[v1][v2] != NULL))
     {
         return true;
     }
@@ -45,7 +45,7 @@ void GraphMatrix::fillRandom(int vertexNumber, float density)
             adjacencyMatrix[i][j] = NULL;
         }
     }
-    for (int i = 0; i < vertices(); i++)
+    for (int i = 1; i < vertices(); i++)
     {
         alreadyConnectedVertices.insertFront(sV);
         do
@@ -73,7 +73,7 @@ void GraphMatrix::fillRandom(int vertexNumber, float density)
 
 void GraphMatrix::bellmanford()
 {
-    int startingVertex = 4;
+    int startingVertex = 2;
 
     int infinity = 1000000;
     int* distance = new int[vertices()];
@@ -93,11 +93,19 @@ void GraphMatrix::bellmanford()
         {
             for (int k = 0; k < vertices(); k++)
             {
+                if (adjacencyMatrix[j][k] != NULL)
+                {
+                    if (distance[j] + adjacencyMatrix[j][k]->weight < distance[k])
+                    {
+                        distance[k] = distance[j] + adjacencyMatrix[j][k]->weight;
+                        predecessor[k] = j;
+                    }
+                }
 
             }
         }
 
-        
+
     }
 
     for (int i = 0; i < vertices(); i++)

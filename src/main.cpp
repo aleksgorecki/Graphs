@@ -7,6 +7,7 @@
 #include "../inc/linkedlist.hh"
 #include "../inc/graph.hh"
 #include "../inc/graphlist.hh"
+#include "../inc/graphmatrix.hh"
 
 
 
@@ -27,7 +28,8 @@ int main()
 	srand(time(0));	
 	float density = 0.25;
 	int vertexNumber = 5;
-	GraphList graf;
+	//GraphList graf;
+	GraphMatrix graf;
 
 	graf.fillRandom(vertexNumber, density);
 	graf.bellmanford();
