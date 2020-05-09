@@ -46,13 +46,8 @@ class LinkedList
         Iterator insertFront(const T& newData);
         Iterator insertBack(const T& newData);
         void insertAtPosition(const Iterator& position, const T& newData);
-        void removeFront();
-        void removeBack();
-        void removeAtPosition(const Iterator& position);
         bool contains(const T& dataToCheck);
 };
-
-//Iterator
 
 template <typename T>
 LinkedList<T>::Iterator::Iterator(Node* position)
@@ -97,8 +92,6 @@ typename LinkedList<T>::Iterator& LinkedList<T>::Iterator::operator --()
     currentNode = currentNode->previous;
     return *this;
 }
-
-//LinkedList
 
 template <typename T>
 LinkedList<T>::LinkedList()
@@ -167,30 +160,6 @@ typename LinkedList<T>::Iterator LinkedList<T>::insertBack(const T& newData)
 {
     insertAtPosition(end(), newData);
     return begin();
-}
-
-template <typename T>
-void LinkedList<T>::removeAtPosition(const LinkedList<T>::Iterator &position)
-{
-    Node* positionNode = position.currentNode;
-    Node* positionNodePredecessor = positionNode->previous;
-    Node* positionNodeSuccessor = positionNode->next;
-    positionNodePredecessor->next = positionNodeSuccessor;
-    positionNodeSuccessor->previous = positionNodePredecessor;
-    delete positionNode;
-    size--;
-}
-
-template <typename T>
-void LinkedList<T>::removeFront()
-{
-    removeAtPosition(begin());
-}
-
-template <typename T>
-void LinkedList<T>::removeBack()
-{
-    removeAtPosition(--end());
 }
 
 template <typename T>

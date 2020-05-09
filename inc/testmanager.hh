@@ -8,6 +8,26 @@
 #include <chrono>
 
 
+
+
+class TestManager
+{
+    private:
+        float densities[4] = {0.25, 0.5, 0.75, 1};
+        int nVertices[5] = {10, 50, 100, 300, 500};
+
+
+
+    public:
+        void bellmanfordTimeEfficiencyTest();
+        void bellmanfordCustomFilePath(std::string filename);
+
+        void prepareRandomGraphSets();
+};
+
+
+
+
 class Timer
 {
     private:
@@ -22,27 +42,6 @@ class Timer
         void clearMeasuredTime() {startPoint = endPoint;};
         int getMeasuredTime() {return std::chrono::duration_cast<std::chrono::microseconds>(endPoint - startPoint).count();};
 };
-
-
-
-class TestManager
-{
-    private:
-        GraphList*** defaultGraphListSet;
-        GraphMatrix*** defaultGraphMatrixSet;
-        GraphList customFileGraphList;
-        GraphMatrix customFileGraphMatrix;
-
-
-
-    public:
-        void bellmanfordTimeEfficiencyTest();
-        void bellmanfordPathLogging();
-        void bellmanfordCustomFileTest(std::string filename);
-};
-
-
-
 
 
 #endif

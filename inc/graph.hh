@@ -50,6 +50,7 @@ class Graph
         virtual void bellmanford() = 0;
 
 
+        Graph() {nVertices = 0;};
         int vertices() {return nVertices;};
         LinkedList<Edge*> edges() {return edgeList;};
         void setBellmanford_startingVertex(int startingVertex) {bellmanford_StartingVertex = startingVertex;};
