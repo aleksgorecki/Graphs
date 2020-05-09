@@ -12,8 +12,8 @@ class TestManager
         GraphList*** defaultGraphListSet;
         GraphMatrix*** defaultGraphMatrixSet;
     public:
-        void bellmanfordTimeEfficiencyTest();
-        void bellmanfordResultsLogging();
+        void bellmanfordTimeEfficiencyTest(bool useCustomFile);
+        void bellmanfordResultsLogging(bool useCustomFile);
 };
 
 
