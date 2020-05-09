@@ -17,7 +17,6 @@ class TestManager
 
     public:
         void bellmanfordTimeEfficiencyTest();
-        void newbellmanfordTimeEfficiencyTest();
         void bellmanfordCustomFilePath(std::string filename);
 
         void prepareRandomGraphSets();

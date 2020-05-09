@@ -10,7 +10,6 @@ void TestManager::bellmanfordTimeEfficiencyTest()
     GraphMatrix testingGraphMatrix[100];   
     Timer timer;
     std::fstream resultsFile;
-
     resultsFile.open("timeEfficiencyTestResults.txt", std::ios::out);
     resultsFile << "Wyniki testu efektywnosci algorytmu bellmanaforda w zaleznosci od reprezentacji grafu. Wyniki podawane sa w mikrosekundach, i sa usrednione dla zestawu 100 losowych grafow dla danej gestosci i ilosci wierzcholkow." << std::endl << std::endl;
     resultsFile << "Reprezentacja w postaci listy sasiedztwa: " << std::endl;

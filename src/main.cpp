@@ -29,10 +29,10 @@ int main()
 	switch(choice)
 	{
 		case 1:
-			manager.newbellmanfordTimeEfficiencyTest();
+			manager.bellmanfordTimeEfficiencyTest();
 			break;
 		case 2:
-			manager.bellmanfordCustomFilePath();
+			manager.bellmanfordCustomFilePath("testInput.txt");
 			break;
 		case 3: 
 			break;
