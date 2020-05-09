@@ -4,13 +4,11 @@
 #include <random>
 #include <ios>
 #include <fstream>
-#include <chrono>
 
 void GraphMatrix::setStartingVertexForBellmanford(int startingVertex)
 {
-    this->startingVertexForBellmanford = startingVertex;
+    this->bellmanford_StartingVertex = startingVertex;
 }
-
 
 int GraphMatrix::vertices()
 {
@@ -65,19 +63,19 @@ void GraphMatrix::fillRandom(int vertexNumber, float density)
     int sV = 0;
     int dV;
     int weight;
-
     for (int i = 1; i < vertices(); i++)
     {
         alreadyConnectedVertices.insertFront(sV);
         do
         {
             dV = rand() % vertexNumber;
-        } while (sV == dV || areAdjacent(sV, dV) || areAdjacent(dV, sV) || alreadyConnectedVertices.contains(dV));
+        } while (sV == dV || areAdjacent(sV, dV) || alreadyConnectedVertices.contains(dV));
         weight = rand() % maxWeight + 1;
         insertEdge(sV, dV, weight);
-        insertEdge(dV, sV, weight);
         sV = dV;
     }
+    weight = rand() % maxWeight + 1;
+    insertEdge(sV, 0, weight);
     int remainingEdges = edgesToCreate - this->edgeList.getSize();
     for (int i = 0; i < remainingEdges; i++)
     {
@@ -88,20 +86,19 @@ void GraphMatrix::fillRandom(int vertexNumber, float density)
         } while (sV == dV);
         weight = rand() % maxWeight + 1;
         insertEdge(sV, dV, weight);
-        insertEdge(dV, sV, weight);
     }
 }
 
-BellmanfordTestResults GraphMatrix::bellmanford()
+void GraphMatrix::bellmanford()
 {
-    int startingVertex = startingVertexForBellmanford;
+    int startingVertex = bellmanford_StartingVertex;
 
     int infinity = 1000000;
     int* distance = new int[vertices()];
     int* predecessor = new int[vertices()];
 
 
-    auto bellmanfordStart = std::chrono::high_resolution_clock::now();
+
     for (int i = 0; i < vertices(); i++)
     {
         distance[i] = infinity;
@@ -131,22 +128,16 @@ BellmanfordTestResults GraphMatrix::bellmanford()
 
 
     }
-    auto bellmanfordEnd = std::chrono::high_resolution_clock::now();
-    int bellmanfordDuration = std::chrono::duration_cast<std::chrono::microseconds>(bellmanfordEnd - bellmanfordStart).count();
 
-
-    /*
     for (int i = 0; i < vertices(); i++)
     {
         std::cout << i << ": dystans = " << distance[i] << " poprzednicy: ";
-            for (int j = i; predecessor[j] != -99; j = predecessor[j])
+            for (int j = i; predecessor[j] != predecessor[this->bellmanford_StartingVertex]; j = predecessor[j])
             {
                 std::cout << predecessor[j] << " ";
             }
         std::cout << std::endl;
     }
-    */
-    return BellmanfordTestResults(bellmanfordDuration, predecessor, distance);
 }
 
 void GraphMatrix::print()
@@ -177,7 +168,7 @@ void GraphMatrix::fillFromFile(char* filename)
     int startingVertex;
     inputFile >> edgeNumber >> vertexNumber >> startingVertex;
     this->nVertices = vertexNumber;
-    this->startingVertexForBellmanford = startingVertex;
+    this->bellmanford_StartingVertex = startingVertex;
     allocateMemoryForDataStructure();
 
     int sV;

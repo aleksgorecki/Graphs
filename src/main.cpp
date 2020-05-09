@@ -3,6 +3,7 @@
 #include <iostream>
 #include <random>
 #include <ctime>
+#include <chrono>
 
 #include "../inc/linkedlist.hh"
 #include "../inc/graph.hh"
@@ -25,24 +26,29 @@ void Log(T data)
 int main()
 {
 
+    auto bellmanfordStart = std::chrono::high_resolution_clock::now();
+	auto bellmanfordEnd = std::chrono::high_resolution_clock::now();
+    int bellmanfordDuration = std::chrono::duration_cast<std::chrono::microseconds>(bellmanfordEnd - bellmanfordStart).count();
+
 	srand(time(0));	
-	float density = 1;
-	int vertexNumber = 100;
+	float density = 0.25;
+	int vertexNumber = 10;
 	GraphList Lgraph;
 	GraphMatrix Mgraph;
 
 	Lgraph.fillRandom(vertexNumber, density);
-	Mgraph.fillRandom(vertexNumber, density);
+	//Mgraph.fillRandom(vertexNumber, density);
 	
 	//Mgraph.fillFromFile("testInput.txt");
 	
-	Mgraph.setStartingVertexForBellmanford(0);
+	Lgraph.print();
+	Mgraph.setStartingVertexForBellmanford(2);
 	Lgraph.setStartingVertexForBellmanford(0);
-	Mgraph.bellmanford();
-	BellmanfordTestResults LResults = Lgraph.bellmanford();
-	BellmanfordTestResults MResults = Mgraph.bellmanford();
-	std::cout << "list: " <<LResults.testDuration << std::endl;
-	std::cout << "matrix: " << MResults.testDuration<< std::endl;
+	Lgraph.bellmanford();
+	//BellmanfordTestResults LResults = Lgraph.bellmanford();
+	//BellmanfordTestResults MResults = Mgraph.bellmanford();
+	//std::cout << "list: " <<LResults.testDuration << std::endl;
+	//std::cout << "matrix: " << MResults.testDuration<< std::endl;
 
 
 	return 0;

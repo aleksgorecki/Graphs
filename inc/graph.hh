@@ -8,14 +8,6 @@ class Graph;
 class GraphList;
 class GraphMatrix;
 
-struct BellmanfordTestResults
-{
-    public:
-        int testDuration;
-        int* predecessorArray;
-        int* distanceArray;  
-        BellmanfordTestResults(int duration, int* predecessor, int* distance) {testDuration = duration; predecessorArray = predecessor; distanceArray = distance;};
-};
 
 class Edge
 {
@@ -37,9 +29,13 @@ class Edge
 class Graph
 {
     protected:
-        int nVertices;
-        int startingVertexForBellmanford;
         LinkedList<Edge*> edgeList;
+        int nVertices;
+        
+        int bellmanford_StartingVertex;
+        int bellmanford_predecessors;
+        int bellmanford_distance;
+
 
     public:
         virtual bool areAdjacent(int firstVertex, int secondVertex) = 0;
@@ -54,7 +50,7 @@ class Graph
         virtual void fillRandom(int vertexNumber, float density) = 0;
         virtual void fillFromFile(char* filename) = 0;
         virtual void setStartingVertexForBellmanford(int startingVertex) = 0;
-        virtual BellmanfordTestResults bellmanford() = 0;
+        virtual void bellmanford() = 0;
 };
 
 
