@@ -72,11 +72,9 @@ void GraphList::fillRandom(int vertexNumber, float density)
 void GraphList::bellmanford()
 {
     int startingVertex = bellmanford_StartingVertex;
-
     int infinity = 1000000;
     int* distance = new int[vertices()];
     int* predecessor = new int[vertices()];
-
     for (int i = 0; i < vertices(); i++)
     {
         distance[i] = infinity;
@@ -112,30 +110,4 @@ void GraphList::print()
         } 
         std::cout << std::endl;
     }
-}
-
-void GraphList::fillFromFile(std::string filename)
-{
-    std::ifstream inputFile;
-    inputFile.open(filename);
-    int vertexNumber;
-    int edgeNumber;
-    int startingVertex;
-    inputFile >> edgeNumber >> vertexNumber >> startingVertex;
-    this->nVertices = vertexNumber;
-    this->bellmanford_StartingVertex = startingVertex;
-    allocateMemoryForDataStructure();
-    int sV;
-    int dV;
-    int w;
-    while (true)
-    {
-        inputFile >> sV >> dV>> w;
-        insertEdge(sV, dV, w);
-        if(inputFile.eof())
-        {
-            break;
-        }
-    }
-
 }

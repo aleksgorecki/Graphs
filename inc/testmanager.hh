@@ -34,7 +34,7 @@ class TestManager
         GraphMatrix customFileGraphMatrix;
 
 
-        
+
     public:
         void bellmanfordTimeEfficiencyTest();
         void bellmanfordPathLogging();

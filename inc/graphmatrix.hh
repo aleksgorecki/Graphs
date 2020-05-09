@@ -18,8 +18,6 @@ class GraphMatrix: public Graph
         void allocateMemoryForDataStructure();
         void bellmanford();
         void print();
-        void fillFromFile(std::string filename);
-
 };
 
 
