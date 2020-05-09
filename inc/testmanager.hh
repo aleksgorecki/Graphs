@@ -13,6 +13,9 @@ class Timer
     private:
         std::chrono::high_resolution_clock::time_point startPoint;
         std::chrono::high_resolution_clock::time_point endPoint;
+
+
+        
     public:
         void startMeasuringTime() {startPoint = std::chrono::high_resolution_clock::now();};
         void stopMeasuringTime() {endPoint = std::chrono::high_resolution_clock::now();};
@@ -29,6 +32,9 @@ class TestManager
         GraphMatrix*** defaultGraphMatrixSet;
         GraphList customFileGraphList;
         GraphMatrix customFileGraphMatrix;
+
+
+        
     public:
         void bellmanfordTimeEfficiencyTest();
         void bellmanfordPathLogging();

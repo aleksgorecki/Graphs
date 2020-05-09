@@ -39,25 +39,20 @@ class Graph
 
 
     public:
-
-
         virtual bool areAdjacent(int firstVertex, int secondVertex) = 0;
-
         virtual void insertEdge(int sourceVertex, int destinationVertex, int weight) = 0;
-
-        int vertices() {return nVertices;};
-        LinkedList<Edge*> edges() {return edgeList;};
-
         virtual void allocateMemoryForDataStructure() = 0;
         virtual void print() = 0;
         virtual void fillRandom(int vertexNumber, float density) = 0;
         virtual void fillFromFile(std::string filename) = 0;
         virtual void bellmanford() = 0;
 
+
+        int vertices() {return nVertices;};
+        LinkedList<Edge*> edges() {return edgeList;};
         void setBellmanford_startingVertex(int startingVertex) {bellmanford_StartingVertex = startingVertex;};
         int* getBellmanford_Predecessors() {return bellmanford_Predecessors;};
         int* getBellmanford_Distance() {return bellmanford_Distance;};
-        
         void printBellmanfordPathToStream(std::ostream& stream)
         {
             for (int i = 0; i < vertices(); i++)
@@ -70,7 +65,7 @@ class Graph
                 stream << std::endl;
             }
         }
-        
+
 };
 
 

@@ -49,13 +49,13 @@ void TestManager::bellmanfordCustomFileTest(std::string filename)
         resultsFile << "Wyniki dzialania algorytmu bellmanaforda dla grafu wczytanego z pliku: " << std::endl << std::endl;
         resultsFile << "Reprezentacja w postaci listy sasiedztwa: " << std::endl;
         resultsFile << "czas dzialania: " << bellmanfordDuration_List << " mikrosekund" << std::endl;
-        resultsFile << "Sciezki do wierzcholkow i ich koszt:" << std::endl;
+        resultsFile << "Sciezki do wierzcholkow i pokonany dystans:" << std::endl;
         customFileGraphList.printBellmanfordPathToStream(resultsFile);
 
         resultsFile << std::endl << std::endl;
 
         resultsFile << "Reprezentacja w postaci macierzy sasiedztwa: " << std::endl;
         resultsFile << "czas dzialania: " << bellmanfordDuration_Matrix << " mikrosekund" << std::endl;
-        resultsFile << "Sciezki do wierzcholkow i ich koszt:" << std::endl;
+        resultsFile << "Sciezki do wierzcholkow i pokonany dystans:" << std::endl;
         customFileGraphMatrix.printBellmanfordPathToStream(resultsFile);
 }
