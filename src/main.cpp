@@ -11,6 +11,7 @@
 int main()
 {
 	srand(time(0));
+	TestManager manager;
 	int choice;
 	std::cout << "Prosty program do zarzadzania testami" << std::endl << std::endl;
 	std::cout << "1 - test efektywnosci czasowej algorytmu Bellmana-Forda w zaleznosci od sposobu reprezentacji grafu" << std::endl;
@@ -25,7 +26,16 @@ int main()
 		std::cout << "Wybor > ";
 		std::cin >> choice;
 	}
-	TestManager manager;
-	manager.bellmanfordTimeEfficiencyTest();
+	switch(choice)
+	{
+		case 1:
+			manager.newbellmanfordTimeEfficiencyTest();
+			break;
+		case 2:
+			manager.bellmanfordCustomFilePath();
+			break;
+		case 3: 
+			break;
+	}
 	return 0;
 }

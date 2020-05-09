@@ -11,12 +11,13 @@ class TestManager
 {
     private:
         float densities[4] = {0.25, 0.5, 0.75, 1};
-        int nVertices[5] = {10, 50, 100, 500, 1000};
+        int nVertices[5] = {10, 25, 50, 100, 150};
 
 
 
     public:
         void bellmanfordTimeEfficiencyTest();
+        void newbellmanfordTimeEfficiencyTest();
         void bellmanfordCustomFilePath(std::string filename);
 
         void prepareRandomGraphSets();

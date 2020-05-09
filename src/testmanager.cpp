@@ -21,6 +21,7 @@ void TestManager::bellmanfordTimeEfficiencyTest()
         {
             for (int k = 0; k < 100; k++)
             {
+                testingGraphList[k] = GraphList();
                 testingGraphList[k].fillRandom(nVertices[j], densities[i]);
                 testingGraphList[k].setBellmanford_startingVertex(0);
             }
@@ -43,6 +44,7 @@ void TestManager::bellmanfordTimeEfficiencyTest()
         {
             for (int k = 0; k < 100; k++)
             {
+                testingGraphMatrix[k] = GraphMatrix();
                 testingGraphMatrix[k].fillRandom(nVertices[j], densities[i]);
                 testingGraphMatrix[k].setBellmanford_startingVertex(0);
             }

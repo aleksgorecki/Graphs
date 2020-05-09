@@ -42,7 +42,7 @@ void GraphMatrix::fillRandom(int vertexNumber, float density)
     int maxWeight = 100;
     this->nVertices = vertexNumber;
     allocateMemoryForDataStructure();
-    int edgesToCreate = (density * vertexNumber * (vertexNumber - 1));
+    int edgesToCreate = (density * vertexNumber * (vertexNumber - 1))/2;
     LinkedList<int> alreadyConnectedVertices;
     int sV = 0;
     int dV;
