@@ -3,6 +3,7 @@
 #include <random>
 #include <ios>
 #include <fstream>
+#include <chrono>
 
 void GraphList::setStartingVertexForBellmanford(int startingVertex)
 {
@@ -52,7 +53,7 @@ void GraphList::fillRandom(int vertexNumber, float density)
     int maxWeight = 100;
     this->nVertices = vertexNumber;
     allocateMemoryForDataStructure();
-    int edgesToCreate = (density * vertexNumber * (vertexNumber - 1))/2;
+    int edgesToCreate = (density * vertexNumber * (vertexNumber - 1));
     LinkedList<int> alreadyConnectedVertices;
     int sV = 0;
     int dV;
@@ -70,7 +71,6 @@ void GraphList::fillRandom(int vertexNumber, float density)
         sV = dV;
     }
     int remainingEdges = edgesToCreate - this->edgeList.getSize();
-    std::cout << remainingEdges << std::endl;
     for (int i = 0; i < remainingEdges; i++)
     {
         sV = rand() % vertexNumber;
@@ -91,14 +91,15 @@ void GraphList::bellmanford()
     int infinity = 1000000;
     int* distance = new int[vertices()];
     int* predecessor = new int[vertices()];
+
+    auto bellmanfordStart = std::chrono::high_resolution_clock::now();
     for (int i = 0; i < vertices(); i++)
     {
         distance[i] = infinity;
         predecessor[i] = -99;
     }
     distance[startingVertex] = 0;
-
-    for (int i = 0; i < vertices(); i++)
+    for (int i = 0; i < vertices() - 1; i++)
     {
         for(int j = 0; j < vertices(); j++)
         {
@@ -112,6 +113,9 @@ void GraphList::bellmanford()
             }
         }
     }
+    auto bellmanfordEnd = std::chrono::high_resolution_clock::now();
+    int bellmanfordDuration = std::chrono::duration_cast<std::chrono::microseconds>(bellmanfordEnd - bellmanfordStart).count();
+    std::cout << bellmanfordDuration << std::endl;
 
     for (int i = 0; i < vertices(); i++)
     {

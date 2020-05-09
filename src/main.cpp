@@ -27,9 +27,9 @@ int main()
 
 	srand(time(0));	
 	float density = 1;
-	int vertexNumber = 1000;
-	GraphList graf;
-	//GraphMatrix graf;
+	int vertexNumber = 10;
+	//GraphList graf;
+	GraphMatrix graf;
 
 	graf.fillRandom(vertexNumber, density);
 	//graf.fillFromFile("testInput.txt");
