@@ -28,15 +28,17 @@ int main()
 	srand(time(0));	
 	float density = 1;
 	int vertexNumber = 10;
-	//GraphList graf;
-	GraphMatrix graf;
+	GraphList Lgraph;
+	GraphMatrix Mgraph;
 
-	graf.fillRandom(vertexNumber, density);
-	//graf.fillFromFile("testInput.txt");
+	Mgraph.fillRandom(vertexNumber, density);
+	Lgraph.fillRandom(vertexNumber, density);
+	//Mgraph.fillFromFile("testInput.txt");
 	
-	graf.setStartingVertexForBellmanford(0);
-	graf.print();
-	graf.bellmanford();
+	Mgraph.setStartingVertexForBellmanford(0);
+	Lgraph.setStartingVertexForBellmanford(0);
+	Mgraph.bellmanford();
+	Lgraph.bellmanford();
 
 
 	return 0;
