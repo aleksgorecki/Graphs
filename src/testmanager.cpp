@@ -27,10 +27,7 @@ void TestManager::bellmanfordCustomFileTest(std::string filename)
 {
         this->customFileGraphList.fillFromFile(filename);
         this->customFileGraphMatrix.fillFromFile(filename);
-
         Timer timer;
-        customFileGraphList.setBellmanford_startingVertex(0);
-        customFileGraphMatrix.setBellmanford_startingVertex(0);
         timer.startMeasuringTime();       
         customFileGraphMatrix.bellmanford();
         customFileGraphList.bellmanford();
@@ -46,7 +43,8 @@ void TestManager::bellmanfordCustomFileTest(std::string filename)
 
         std::ofstream resultsFile;
         resultsFile.open("customFileResults.txt", std::ios::out);
-        resultsFile << "Wyniki dzialania algorytmu bellmanaforda dla grafu wczytanego z pliku: " << std::endl << std::endl;
+        resultsFile << "Wyniki dzialania algorytmu bellmanaforda dla grafu wczytanego z pliku: "  << std::endl << std::endl;
+
         resultsFile << "Reprezentacja w postaci listy sasiedztwa: " << std::endl;
         resultsFile << "czas dzialania: " << bellmanfordDuration_List << " mikrosekund" << std::endl;
         resultsFile << "Sciezki do wierzcholkow i pokonany dystans:" << std::endl;
