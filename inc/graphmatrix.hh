@@ -4,7 +4,7 @@
 #include "graph.hh"
 
 
-class GraphMatrix: private Graph
+class GraphMatrix: public Graph
 {
     private:
         Edge*** adjacencyMatrix; 
@@ -14,16 +14,13 @@ class GraphMatrix: private Graph
 
         void insertEdge(int sourceVertex, int destinationVertex, int weight);
 
-        int vertices();
-        LinkedList<Edge*> edges();
 
         void fillRandom(int vertexNumber, float density);
 
         void allocateMemoryForDataStructure();
         void bellmanford();
         void print();
-        void fillFromFile(char* filename);
-        void setStartingVertexForBellmanford(int startingVertex);
+        void fillFromFile(std::string filename);
 
 };
 

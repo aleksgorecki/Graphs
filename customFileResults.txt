@@ -1,0 +1,20 @@
+Wyniki dzialania algorytmu bellmanaforda dla grafu wczytanego z pliku: 
+
+Reprezentacja w postaci listy sasiedztwa: 
+czas dzialania: 50 mikrosekund
+Sciezki do wierzcholkow i ich koszt:
+0: dystans = 0 poprzednicy: 
+1: dystans = 12 poprzednicy: 0 
+2: dystans = 88 poprzednicy: 1 0 
+3: dystans = 112 poprzednicy: 2 1 0 
+4: dystans = 194 poprzednicy: 3 2 1 0 
+
+
+Reprezentacja w postaci macierzy sasiedztwa: 
+czas dzialania: 42 mikrosekund
+Sciezki do wierzcholkow i ich koszt:
+0: dystans = 0 poprzednicy: 
+1: dystans = 12 poprzednicy: 0 
+2: dystans = 88 poprzednicy: 1 0 
+3: dystans = 112 poprzednicy: 2 1 0 
+4: dystans = 194 poprzednicy: 3 2 1 0 

@@ -8,7 +8,7 @@
 
 
 
-class GraphList: private Graph
+class GraphList: public Graph
 {
     private:
         LinkedList<Edge*>* adjacencyList;
@@ -17,16 +17,12 @@ class GraphList: private Graph
 
         void insertEdge(int sourceVertex, int destinationVertex, int weight);
 
-        int vertices();
-        LinkedList<Edge*> edges();
-
         void fillRandom(int vertexNumber, float density);
 
         void print();
         void bellmanford();
-        void fillFromFile(char* filename);
+        void fillFromFile(std::string filename);
         void allocateMemoryForDataStructure();
-        void setStartingVertexForBellmanford(int startingVertex);
 };
 
 

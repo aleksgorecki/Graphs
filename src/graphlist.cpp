@@ -4,20 +4,6 @@
 #include <ios>
 #include <fstream>
 
-void GraphList::setStartingVertexForBellmanford(int startingVertex)
-{
-    this->bellmanford_StartingVertex = startingVertex;
-}
-
-int GraphList::vertices()
-{
-    return this->nVertices;
-}
-
-LinkedList<Edge*> GraphList::edges()
-{  
-    return edgeList;
-}
 
 void GraphList::allocateMemoryForDataStructure()
 {
@@ -111,17 +97,8 @@ void GraphList::bellmanford()
             }
         }
     }
-
-    
-    for (int i = 0; i < vertices(); i++)
-    {
-        std::cout << i << ": dystans = " << distance[i] << " poprzednicy: ";
-        for (int j = i; predecessor[j] != predecessor[bellmanford_StartingVertex]; j = predecessor[j])
-        {
-            std::cout << predecessor[j] << " ";
-        }
-        std::cout << std::endl;
-    }
+    this->bellmanford_Distance = distance;
+    this->bellmanford_Predecessors = predecessor;
 }
 
 void GraphList::print()
@@ -137,7 +114,7 @@ void GraphList::print()
     }
 }
 
-void GraphList::fillFromFile(char* filename)
+void GraphList::fillFromFile(std::string filename)
 {
     std::ifstream inputFile;
     inputFile.open(filename);
@@ -148,7 +125,6 @@ void GraphList::fillFromFile(char* filename)
     this->nVertices = vertexNumber;
     this->bellmanford_StartingVertex = startingVertex;
     allocateMemoryForDataStructure();
-
     int sV;
     int dV;
     int w;

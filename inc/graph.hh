@@ -2,6 +2,7 @@
 #define GRAPH_HH
 
 #include "linkedlist.hh"
+#include "string"
 
 class Edge;
 class Graph;
@@ -31,27 +32,48 @@ class Graph
     protected:
         LinkedList<Edge*> edgeList;
         int nVertices;
-        
         int bellmanford_StartingVertex;
-        int bellmanford_predecessors;
-        int bellmanford_distance;
+        int* bellmanford_Predecessors;
+        int* bellmanford_Distance;
+
 
 
     public:
+
+
         virtual bool areAdjacent(int firstVertex, int secondVertex) = 0;
 
         virtual void insertEdge(int sourceVertex, int destinationVertex, int weight) = 0;
 
-        virtual int vertices() = 0;
-        virtual LinkedList<Edge*> edges() = 0;
+        int vertices() {return nVertices;};
+        LinkedList<Edge*> edges() {return edgeList;};
 
         virtual void allocateMemoryForDataStructure() = 0;
         virtual void print() = 0;
         virtual void fillRandom(int vertexNumber, float density) = 0;
-        virtual void fillFromFile(char* filename) = 0;
-        virtual void setStartingVertexForBellmanford(int startingVertex) = 0;
+        virtual void fillFromFile(std::string filename) = 0;
         virtual void bellmanford() = 0;
+
+        void setBellmanford_startingVertex(int startingVertex) {bellmanford_StartingVertex = startingVertex;};
+        int* getBellmanford_Predecessors() {return bellmanford_Predecessors;};
+        int* getBellmanford_Distance() {return bellmanford_Distance;};
+        
+        void printBellmanfordPathToStream(std::ostream& stream)
+        {
+            for (int i = 0; i < vertices(); i++)
+            {
+                stream << i << ": dystans = " << bellmanford_Distance[i] << " poprzednicy: ";
+                    for (int j = i; bellmanford_Predecessors[j] != bellmanford_Predecessors[this->bellmanford_StartingVertex]; j = bellmanford_Predecessors[j])
+                    {
+                        stream<< bellmanford_Predecessors[j] << " ";
+                    }
+                stream << std::endl;
+            }
+        }
+        
 };
+
+
 
 
 

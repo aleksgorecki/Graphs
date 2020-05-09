@@ -5,21 +5,6 @@
 #include <ios>
 #include <fstream>
 
-void GraphMatrix::setStartingVertexForBellmanford(int startingVertex)
-{
-    this->bellmanford_StartingVertex = startingVertex;
-}
-
-int GraphMatrix::vertices()
-{
-    return nVertices;
-}
-
-LinkedList<Edge*> GraphMatrix::edges()
-{  
-    return edgeList;
-}
-
 void GraphMatrix::allocateMemoryForDataStructure()
 {
     this->adjacencyMatrix = new Edge**[vertices()];
@@ -96,20 +81,14 @@ void GraphMatrix::bellmanford()
     int infinity = 1000000;
     int* distance = new int[vertices()];
     int* predecessor = new int[vertices()];
-
-
-
     for (int i = 0; i < vertices(); i++)
     {
         distance[i] = infinity;
         predecessor[i] = -99;
     }
     distance[startingVertex] = 0;
-
     for (int i = 0; i < vertices() - 1; i++)
     {
-
-
         for(int j = 0; j < vertices(); j++)
         {
             for (int k = 0; k < vertices(); k++)
@@ -125,10 +104,7 @@ void GraphMatrix::bellmanford()
 
             }
         }
-
-
     }
-
     for (int i = 0; i < vertices(); i++)
     {
         std::cout << i << ": dystans = " << distance[i] << " poprzednicy: ";
@@ -138,6 +114,8 @@ void GraphMatrix::bellmanford()
             }
         std::cout << std::endl;
     }
+    this->bellmanford_Distance = distance;
+    this->bellmanford_Predecessors = predecessor;
 }
 
 void GraphMatrix::print()
@@ -159,7 +137,7 @@ void GraphMatrix::print()
     }
 }
 
-void GraphMatrix::fillFromFile(char* filename)
+void GraphMatrix::fillFromFile(std::string filename)
 {
     std::ifstream inputFile;
     inputFile.open(filename);
@@ -170,7 +148,6 @@ void GraphMatrix::fillFromFile(char* filename)
     this->nVertices = vertexNumber;
     this->bellmanford_StartingVertex = startingVertex;
     allocateMemoryForDataStructure();
-
     int sV;
     int dV;
     int w;
@@ -183,5 +160,4 @@ void GraphMatrix::fillFromFile(char* filename)
             break;
         }
     }
-
 }

@@ -9,6 +9,7 @@
 #include "../inc/graph.hh"
 #include "../inc/graphlist.hh"
 #include "../inc/graphmatrix.hh"
+#include "../inc/testmanager.hh"
 
 
 
@@ -26,9 +27,7 @@ void Log(T data)
 int main()
 {
 
-    auto bellmanfordStart = std::chrono::high_resolution_clock::now();
-	auto bellmanfordEnd = std::chrono::high_resolution_clock::now();
-    int bellmanfordDuration = std::chrono::duration_cast<std::chrono::microseconds>(bellmanfordEnd - bellmanfordStart).count();
+
 
 	srand(time(0));	
 	float density = 0.25;
@@ -36,20 +35,13 @@ int main()
 	GraphList Lgraph;
 	GraphMatrix Mgraph;
 
+	TestManager manager;
 	Lgraph.fillRandom(vertexNumber, density);
-	//Mgraph.fillRandom(vertexNumber, density);
-	
-	//Mgraph.fillFromFile("testInput.txt");
-	
 	Lgraph.print();
-	Mgraph.setStartingVertexForBellmanford(2);
-	Lgraph.setStartingVertexForBellmanford(0);
+	Lgraph.setBellmanford_startingVertex(0);
 	Lgraph.bellmanford();
-	//BellmanfordTestResults LResults = Lgraph.bellmanford();
-	//BellmanfordTestResults MResults = Mgraph.bellmanford();
-	//std::cout << "list: " <<LResults.testDuration << std::endl;
-	//std::cout << "matrix: " << MResults.testDuration<< std::endl;
-
+	Lgraph.getBellmanford_Predecessors();
+	manager.bellmanfordCustomFileTest("testInput.txt");
 
 	return 0;
 }
