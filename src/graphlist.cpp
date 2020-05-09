@@ -84,7 +84,7 @@ void GraphList::fillRandom(int vertexNumber, float density)
     }
 }
 
-void GraphList::bellmanford()
+BellmanfordTestResults GraphList::bellmanford()
 {
     int startingVertex = startingVertexForBellmanford;
 
@@ -126,8 +126,7 @@ void GraphList::bellmanford()
         }
         std::cout << std::endl;
     }
-    delete[] distance;
-    delete[] predecessor;
+    return BellmanfordTestResults(bellmanfordDuration, predecessor, distance);
 }
 
 void GraphList::print()

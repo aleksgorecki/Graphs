@@ -20,7 +20,7 @@ class GraphMatrix: private Graph
         void fillRandom(int vertexNumber, float density);
 
         void allocateMemoryForDataStructure();
-        void bellmanford();
+        BellmanfordTestResults bellmanford();
         void print();
         void fillFromFile(char* filename);
         void setStartingVertexForBellmanford(int startingVertex);

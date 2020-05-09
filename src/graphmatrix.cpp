@@ -92,7 +92,7 @@ void GraphMatrix::fillRandom(int vertexNumber, float density)
     }
 }
 
-void GraphMatrix::bellmanford()
+BellmanfordTestResults GraphMatrix::bellmanford()
 {
     int startingVertex = startingVertexForBellmanford;
 
@@ -145,8 +145,7 @@ void GraphMatrix::bellmanford()
             }
         std::cout << std::endl;
     }
-    delete[] distance;
-    delete[] predecessor;
+    return BellmanfordTestResults(bellmanfordDuration, predecessor, distance);
 }
 
 void GraphMatrix::print()

@@ -11,9 +11,10 @@ class GraphMatrix;
 struct BellmanfordTestResults
 {
     public:
-        float testDuration;
-        int* formattedPredecessorArray;
+        int testDuration;
+        int* predecessorArray;
         int* distanceArray;  
+        BellmanfordTestResults(int duration, int* predecessor, int* distance) {testDuration = duration; predecessorArray = predecessor; distanceArray = distance;};
 };
 
 class Edge
@@ -53,6 +54,7 @@ class Graph
         virtual void fillRandom(int vertexNumber, float density) = 0;
         virtual void fillFromFile(char* filename) = 0;
         virtual void setStartingVertexForBellmanford(int startingVertex) = 0;
+        virtual BellmanfordTestResults bellmanford() = 0;
 };
 
 

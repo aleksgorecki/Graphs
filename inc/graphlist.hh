@@ -23,7 +23,7 @@ class GraphList: private Graph
         void fillRandom(int vertexNumber, float density);
 
         void print();
-        void bellmanford();
+        BellmanfordTestResults bellmanford();
         void fillFromFile(char* filename);
         void allocateMemoryForDataStructure();
         void setStartingVertexForBellmanford(int startingVertex);

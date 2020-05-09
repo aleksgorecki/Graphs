@@ -31,6 +31,8 @@ int main()
 	GraphList Lgraph;
 	GraphMatrix Mgraph;
 
+	
+
 	Mgraph.fillRandom(vertexNumber, density);
 	Lgraph.fillRandom(vertexNumber, density);
 	//Mgraph.fillFromFile("testInput.txt");
@@ -38,7 +40,8 @@ int main()
 	Mgraph.setStartingVertexForBellmanford(0);
 	Lgraph.setStartingVertexForBellmanford(0);
 	Mgraph.bellmanford();
-	Lgraph.bellmanford();
+	BellmanfordTestResults Results = Lgraph.bellmanford();
+	Log(Results.testDuration);
 
 
 	return 0;
