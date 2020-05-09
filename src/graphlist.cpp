@@ -115,16 +115,10 @@ void GraphList::bellmanford()
     for (int i = 0; i < vertices(); i++)
     {
         std::cout << i << ": dystans = " << distance[i] << " poprzednicy: ";
-        /*
-        for (LinkedList<int>::Iterator iter = predecessors[i].begin(); iter != predecessors[i].end(); ++iter)
+        for (int j = i; predecessor[j] != -99; j = predecessor[j])
         {
-          std::cout << iter.getData();   
+            std::cout << predecessor[j] << " ";
         }
-        */
-            for (int j = i; j != predecessor[startingVertex]; j = predecessor[j])
-            {
-                std::cout << predecessor[j] << " ";
-            }
         std::cout << std::endl;
     }
     delete[] distance;

@@ -97,7 +97,6 @@ void GraphMatrix::bellmanford()
     int infinity = 1000000;
     int* distance = new int[vertices()];
     int* predecessor = new int[vertices()];
-    LinkedList<int>* predecessors = new LinkedList<int>[vertices()];
     for (int i = 0; i < vertices(); i++)
     {
         distance[i] = infinity;
@@ -119,7 +118,6 @@ void GraphMatrix::bellmanford()
                     {
                         distance[k] = distance[j] + adjacencyMatrix[j][k]->weight;
                         predecessor[k] = j;
-                        predecessors[k].insertBack(j);
                     }
                 }
 
@@ -129,21 +127,10 @@ void GraphMatrix::bellmanford()
 
     }
 
-    /*
-    for (int i = 0; i < vertices(); i++)
-    {
-        std::cout << i << "  --  " << predecessor[i] << "  --  " << distance[i] << std::endl;
-    }
-    */
+
     for (int i = 0; i < vertices(); i++)
     {
         std::cout << i << ": dystans = " << distance[i] << " poprzednicy: ";
-        /*
-        for (LinkedList<int>::Iterator iter = predecessors[i].begin(); iter != predecessors[i].end(); ++iter)
-        {
-          std::cout << iter.getData();   
-        }
-        */
             for (int j = i; j != predecessor[startingVertex]; j = predecessor[j])
             {
                 std::cout << predecessor[j] << " ";
