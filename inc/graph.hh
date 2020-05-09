@@ -5,17 +5,20 @@
 
 class Edge;
 class Graph;
+class GraphList;
+class GraphMatrix;
 
-class BellmanfordTestResults
+struct BellmanfordTestResults
 {
     public:
-
+        float testDuration;
+        int* formattedPredecessorArray;
+        int* distanceArray;  
 };
 
 class Edge
 {
-    //protected:
-    public:
+    protected:
         int weight;
         int sourceVertex;
         int destinationVertex;
@@ -25,6 +28,8 @@ class Edge
         Edge(int sV, int dV, int w) {sourceVertex = sV; destinationVertex = dV; weight = w;};
         Edge() {};
     friend class Graph;
+    friend class GraphList;
+    friend class GraphMatrix;
 };
 
 
