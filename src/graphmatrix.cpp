@@ -133,9 +133,9 @@ BellmanfordTestResults GraphMatrix::bellmanford()
     }
     auto bellmanfordEnd = std::chrono::high_resolution_clock::now();
     int bellmanfordDuration = std::chrono::duration_cast<std::chrono::microseconds>(bellmanfordEnd - bellmanfordStart).count();
-    std::cout << bellmanfordDuration << std::endl;
 
 
+    /*
     for (int i = 0; i < vertices(); i++)
     {
         std::cout << i << ": dystans = " << distance[i] << " poprzednicy: ";
@@ -145,6 +145,7 @@ BellmanfordTestResults GraphMatrix::bellmanford()
             }
         std::cout << std::endl;
     }
+    */
     return BellmanfordTestResults(bellmanfordDuration, predecessor, distance);
 }
 
