@@ -3,7 +3,6 @@
 
 #include "graph.hh"
 
-
 class GraphMatrix: public Graph
 {
     private:
@@ -19,6 +18,5 @@ class GraphMatrix: public Graph
         void bellmanford();
         void print();
 };
-
 
 #endif

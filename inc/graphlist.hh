@@ -1,12 +1,7 @@
 #ifndef GRAPHLIST_HH
 #define GRAPHLIST_HH
 
-
 #include "graph.hh"
-
-
-
-
 
 class GraphList: public Graph
 {
@@ -23,6 +18,5 @@ class GraphList: public Graph
         void bellmanford();
         void allocateMemoryForDataStructure();
 };
-
 
 #endif

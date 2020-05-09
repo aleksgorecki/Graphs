@@ -6,12 +6,10 @@
 #include "linkedlist.hh"
 #include "string"
 
-
 class Edge;
 class Graph;
 class GraphList;
 class GraphMatrix;
-
 
 class Edge
 {
@@ -28,7 +26,6 @@ class Edge
     friend class GraphList;
     friend class GraphMatrix;
 };
-
 
 class Graph
 {
@@ -93,9 +90,5 @@ class Graph
             }
         }
 };
-
-
-
-
 
 #endif

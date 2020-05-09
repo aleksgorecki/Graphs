@@ -1,9 +1,8 @@
-#include "../inc/graphlist.hh"
-
 #include <random>
 #include <ios>
 #include <fstream>
 
+#include "../inc/graphlist.hh"
 
 void GraphList::allocateMemoryForDataStructure()
 {

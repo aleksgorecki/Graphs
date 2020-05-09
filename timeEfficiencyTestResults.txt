@@ -2,52 +2,7 @@ Wyniki testu efektywnosci algorytmu bellmanaforda w zaleznosci od reprezentacji 
 
 Reprezentacja w postaci listy sasiedztwa: 
 gestosc grafu: 0.25
- ilosc wierzcholkow: 10 czas: 15
- ilosc wierzcholkow: 50 czas: 260
- ilosc wierzcholkow: 100 czas: 1440
- ilosc wierzcholkow: 300 czas: 59180
- ilosc wierzcholkow: 500 czas: 203745
-gestosc grafu: 0.5
- ilosc wierzcholkow: 10 czas: 2
- ilosc wierzcholkow: 50 czas: 73
- ilosc wierzcholkow: 100 czas: 287
- ilosc wierzcholkow: 300 czas: 2587
- ilosc wierzcholkow: 500 czas: 330918
-gestosc grafu: 0.75
- ilosc wierzcholkow: 10 czas: 3
- ilosc wierzcholkow: 50 czas: 74
- ilosc wierzcholkow: 100 czas: 289
- ilosc wierzcholkow: 300 czas: 2596
- ilosc wierzcholkow: 500 czas: 326325
-gestosc grafu: 1
- ilosc wierzcholkow: 10 czas: 3
- ilosc wierzcholkow: 50 czas: 72
- ilosc wierzcholkow: 100 czas: 289
- ilosc wierzcholkow: 300 czas: 2603
- ilosc wierzcholkow: 500 czas: 326283
-
-Reprezentacja w postaci macierzy sasiedztwa: 
-gestosc grafu: 0.25
- ilosc wierzcholkow: 10 czas: 5
- ilosc wierzcholkow: 50 czas: 726
- ilosc wierzcholkow: 100 czas: 5675
- ilosc wierzcholkow: 300 czas: 178138
- ilosc wierzcholkow: 500 czas: 991108
-gestosc grafu: 0.5
- ilosc wierzcholkow: 10 czas: 5
- ilosc wierzcholkow: 50 czas: 498
- ilosc wierzcholkow: 100 czas: 3696
- ilosc wierzcholkow: 300 czas: 95889
- ilosc wierzcholkow: 500 czas: 1239776
-gestosc grafu: 0.75
- ilosc wierzcholkow: 10 czas: 5
- ilosc wierzcholkow: 50 czas: 494
- ilosc wierzcholkow: 100 czas: 3583
- ilosc wierzcholkow: 300 czas: 94829
- ilosc wierzcholkow: 500 czas: 1228676
-gestosc grafu: 1
- ilosc wierzcholkow: 10 czas: 5
- ilosc wierzcholkow: 50 czas: 495
- ilosc wierzcholkow: 100 czas: 3667
- ilosc wierzcholkow: 300 czas: 94516
- ilosc wierzcholkow: 500 czas: 1205128
+ ilosc wierzcholkow: 10 czas: 7
+ ilosc wierzcholkow: 50 czas: 517
+ ilosc wierzcholkow: 100 czas: 2893
+ ilosc wierzcholkow: 500 czas: 692187

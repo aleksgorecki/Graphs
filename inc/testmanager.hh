@@ -7,14 +7,11 @@
 #include <string>
 #include <chrono>
 
-
-
-
 class TestManager
 {
     private:
         float densities[4] = {0.25, 0.5, 0.75, 1};
-        int nVertices[5] = {10, 50, 100, 300, 500};
+        int nVertices[5] = {10, 50, 100, 500, 1000};
 
 
 
@@ -24,9 +21,6 @@ class TestManager
 
         void prepareRandomGraphSets();
 };
-
-
-
 
 class Timer
 {

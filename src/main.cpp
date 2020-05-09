@@ -1,9 +1,6 @@
-//placeholder
-
 #include <iostream>
 #include <random>
 #include <ctime>
-#include <chrono>
 
 #include "../inc/linkedlist.hh"
 #include "../inc/graph.hh"
@@ -11,22 +8,9 @@
 #include "../inc/graphmatrix.hh"
 #include "../inc/testmanager.hh"
 
-
-
-
-//funkcja pomocnicza na czas testow:
-template <typename T>
-void Log(T data)
-{
-	std::cout << data << std::endl;
-}
-
-
-
-
 int main()
 {
-
+	srand(time(0));
 	int choice;
 	std::cout << "Prosty program do zarzadzania testami" << std::endl << std::endl;
 	std::cout << "1 - test efektywnosci czasowej algorytmu Bellmana-Forda w zaleznosci od sposobu reprezentacji grafu" << std::endl;
@@ -43,6 +27,5 @@ int main()
 	}
 	TestManager manager;
 	manager.bellmanfordTimeEfficiencyTest();
-
 	return 0;
 }

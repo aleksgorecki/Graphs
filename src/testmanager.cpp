@@ -1,15 +1,8 @@
-#include "../inc/testmanager.hh"
-#include <string>
-#include <iostream>
 #include <chrono>
 #include <fstream>
 #include <ios>
 
-
-
-
-
-
+#include "../inc/testmanager.hh"
 
 void TestManager::bellmanfordTimeEfficiencyTest()
 {
@@ -66,7 +59,6 @@ void TestManager::bellmanfordTimeEfficiencyTest()
     }
 }
 
-
 void TestManager::bellmanfordCustomFilePath(std::string filename)
 {
     GraphList customFileGraphList;
@@ -79,15 +71,11 @@ void TestManager::bellmanfordCustomFilePath(std::string filename)
     customFileGraphList.bellmanford();
     timer.stopMeasuringTime();
     int bellmanfordDuration_List = timer.getMeasuredTime();
-
     timer.clearMeasuredTime();
-
     timer.startMeasuringTime();
     customFileGraphMatrix.bellmanford();
     timer.stopMeasuringTime();
     int bellmanfordDuration_Matrix = timer.getMeasuredTime();
-
-
     std::ofstream resultsFile;
     resultsFile.open("customFileResults.txt", std::ios::out);
     resultsFile << "Wyniki dzialania algorytmu bellmanaforda dla grafu wczytanego z pliku: "  << std::endl << std::endl;

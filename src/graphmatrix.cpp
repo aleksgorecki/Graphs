@@ -1,9 +1,9 @@
-#include "../inc/graphmatrix.hh"
-#include "../inc/graphmatrix.hh"
-
 #include <random>
 #include <ios>
 #include <fstream>
+
+#include "../inc/graphmatrix.hh"
+#include "../inc/graphmatrix.hh"
 
 void GraphMatrix::allocateMemoryForDataStructure()
 {
@@ -28,7 +28,6 @@ bool GraphMatrix::areAdjacent(int v1, int v2)
         return true;
     }
     return false;
-    
 }
 
 void GraphMatrix::insertEdge(int sV, int dV, int w)
@@ -77,7 +76,6 @@ void GraphMatrix::fillRandom(int vertexNumber, float density)
 void GraphMatrix::bellmanford()
 {
     int startingVertex = bellmanford_StartingVertex;
-
     int infinity = 1000000;
     int* distance = new int[vertices()];
     int* predecessor = new int[vertices()];
@@ -101,7 +99,6 @@ void GraphMatrix::bellmanford()
                         predecessor[k] = j;
                     }
                 }
-
             }
         }
     }
@@ -127,4 +124,3 @@ void GraphMatrix::print()
         std::cout << std::endl;
     }
 }
-
