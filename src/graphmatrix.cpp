@@ -83,7 +83,7 @@ void GraphMatrix::fillRandom(int vertexNumber, float density)
         do
         {
             dV = rand() % vertexNumber;
-        } while (sV == dV || areAdjacent(sV, dV));
+        } while (sV == dV);
         weight = rand() % maxWeight + 1;
         insertEdge(sV, dV, weight);
         insertEdge(dV, sV, weight);

@@ -70,13 +70,14 @@ void GraphList::fillRandom(int vertexNumber, float density)
         sV = dV;
     }
     int remainingEdges = edgesToCreate - this->edgeList.getSize();
+    std::cout << remainingEdges << std::endl;
     for (int i = 0; i < remainingEdges; i++)
     {
         sV = rand() % vertexNumber;
         do
         {
             dV = rand() % vertexNumber;
-        } while (sV == dV || areAdjacent(sV, dV));
+        } while (sV == dV);
         weight = rand() % maxWeight + 1;
         insertEdge(sV, dV, weight);
         insertEdge(dV, sV, weight);

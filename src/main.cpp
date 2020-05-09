@@ -26,13 +26,13 @@ int main()
 {
 
 	srand(time(0));	
-	float density = 0.25;
-	int vertexNumber = 5;
+	float density = 1;
+	int vertexNumber = 1000;
 	GraphList graf;
 	//GraphMatrix graf;
 
 	graf.fillRandom(vertexNumber, density);
-	//graf.fillFromFile("test.txt");
+	//graf.fillFromFile("testInput.txt");
 	
 	graf.setStartingVertexForBellmanford(0);
 	graf.print();
