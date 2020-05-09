@@ -41,10 +41,10 @@ class Graph
     public:
         virtual bool areAdjacent(int firstVertex, int secondVertex) = 0;
         virtual void insertEdge(int sourceVertex, int destinationVertex, int weight) = 0;
-        virtual void allocateMemoryForDataStructure() = 0;
-        virtual void print() = 0;
         virtual void fillRandom(int vertexNumber, float density) = 0;
+        virtual void allocateMemoryForDataStructure() = 0;
         virtual void bellmanford() = 0;
+        virtual void print() = 0;
 
 
         Graph() {nVertices = 0;};

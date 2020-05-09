@@ -12,11 +12,11 @@ class GraphList: public Graph
 
     public:
         bool areAdjacent(int firstVertex, int secondVertex);
-        void insertEdge(int sourceVertex, int destinationVertex, int weight);
+        void insertEdge(int sourceVertex, int destinationVertex, int weight);   
         void fillRandom(int vertexNumber, float density);
-        void print();
-        void bellmanford();
         void allocateMemoryForDataStructure();
+        void bellmanford();
+        void print();     
 };
 
 #endif
